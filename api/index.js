@@ -7,6 +7,7 @@ const mongoose = require("mongoose")
 const PORT = 5000;
 const authRoute = require("./routes/auth.js")
 const usersRoute = require("./routes/users.js")
+const postsRoute = require("./routes/posts.js")
 
 app.use(express.json())
 mongoose.connect(process.env.MONGO_URL, {
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
+app.use("/api/posts", postsRoute)
 
 app.listen(PORT, ()=>{
 	console.log(`Server Running On Port ${PORT}`);
