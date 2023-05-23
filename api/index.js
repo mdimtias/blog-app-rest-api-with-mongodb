@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const multer = require("multer");
+const cors = require('cors');
 const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose")
@@ -33,7 +34,7 @@ mongoose.connect(process.env.MONGO_URL, {
 })
 .then(console.log("Connect to MongoDb"))
 .catch(err=>console.log(err))
-
+app.use(cors())
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/posts", postsRoute)
